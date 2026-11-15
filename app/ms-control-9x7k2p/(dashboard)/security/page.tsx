@@ -1,5 +1,6 @@
 import { requireAuth } from '@/lib/require-auth';
 import PasswordChangeForm from '@/components/PasswordChangeForm';
+import AdminEmailChangeForm from '@/components/AdminEmailChangeForm';
 import ActivityLog from '@/components/ActivityLog';
 import { getRecentActivity, getActivitySummary, getSuspiciousIPs } from '@/lib/db';
 import { getAdminPath } from '@/lib/admin-path';
@@ -26,6 +27,7 @@ export default async function SecurityPage() {
         </div>
       </div>
 
+      <AdminEmailChangeForm adminPath={adminPath} />
       <PasswordChangeForm adminPath={adminPath} />
 
       <ActivityLog activities={activities} summary={summary} suspiciousIPs={suspiciousIPs} adminPath={adminPath} />

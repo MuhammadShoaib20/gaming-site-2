@@ -1,4 +1,4 @@
-export const CANONICAL_SITE_URL = 'https://puzzlewalkthroughs.com';
+export const CANONICAL_SITE_URL = 'https://levelguide.fun';
 
 export function canonicalUrl(pathOrUrl: string): string {
   const parsedUrl = new URL(pathOrUrl, CANONICAL_SITE_URL);

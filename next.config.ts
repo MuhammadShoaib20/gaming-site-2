@@ -4,7 +4,7 @@ import { withIndexNow } from 'nextjs-indexnow';
 
 const ADMIN_PATH = process.env.ADMIN_SECRET_PATH || 'ms-control-9x7k2p';
 const INDEXNOW_HOST = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com'
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun'
 ).hostname;
 
 const nextConfig: NextConfig = {
@@ -35,6 +35,18 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
   skipTrailingSlashRedirect: true,
+  async rewrites() {
+    if (ADMIN_PATH === 'ms-control-9x7k2p') return [];
+
+    return {
+      beforeFiles: [
+        {
+          source: `/${ADMIN_PATH}/:path*`,
+          destination: '/ms-control-9x7k2p/:path*',
+        },
+      ],
+    };
+  },
   async headers() {
     return [
       {

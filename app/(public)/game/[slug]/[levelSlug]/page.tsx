@@ -183,7 +183,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const level = await getLevelByNumber(game.id, levelNumber);
   if (!level) return {};
 
-  const titleSuffix = ' | Puzzle Walkthroughs';
+  const titleSuffix = ' | LevelGuide';
   const titlePrefix = trimTitleAtWordBoundary(
     level.meta_title || level.title?.trim() || `${game.name} Level ${level.level_number}`,
     59 - titleSuffix.length
@@ -237,7 +237,7 @@ export default async function LevelPage({ params }: Props) {
   const currentIndex = allLevels.findIndex((item) => item.level_number === levelNumber);
   const prevLevel = currentIndex > 0 ? allLevels[currentIndex - 1] : null;
   const nextLevel = currentIndex < allLevels.length - 1 ? allLevels[currentIndex + 1] : null;
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const popularLevels = [...allLevels]
     .sort((a, b) => (b.views || 0) - (a.views || 0))
     .slice(0, 5);

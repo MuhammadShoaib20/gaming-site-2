@@ -102,8 +102,8 @@ CREATE TABLE IF NOT EXISTS public.game_links (
 
 CREATE TABLE IF NOT EXISTS public.settings (
   id integer PRIMARY KEY DEFAULT 1 CHECK (id = 1),
-  site_name text NOT NULL DEFAULT 'Puzzle Walkthroughs',
-  site_url text NOT NULL DEFAULT 'https://yoursite.com',
+  site_name text NOT NULL DEFAULT 'LevelGuide',
+  site_url text NOT NULL DEFAULT 'https://levelguide.fun',
   site_logo text,
   site_description text,
   adsense_header text,

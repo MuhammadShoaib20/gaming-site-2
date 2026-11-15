@@ -40,9 +40,9 @@ VALUES
   (
     'about',
     'About us',
-    '<p>Welcome to Puzzle Walkthroughs — your one-stop destination for complete video guides on puzzle games.</p><p>We provide level-by-level walkthroughs, tips, and tricks to help you beat even the toughest puzzles.</p>',
+    '<p>Welcome to LevelGuide — the place to come back to whenever a puzzle game level has you completely stuck.</p><p>Our aim is simple: we play through the hardest levels of popular puzzle games ourselves, work out exactly how to beat them, and turn that into clear video walkthroughs and step-by-step guides — level by level — so you are never stuck for long.</p><p>Every guide is free to use, quick to find, and focused on one thing: getting you unstuck and back to playing, without confusing text or long detours.</p>',
     'About Us',
-    'Learn about Puzzle Walkthroughs — your source for complete puzzle game guides.',
+    'Learn about LevelGuide — free, level-by-level video walkthroughs that help you beat the hardest puzzle game levels.',
     true,
     true,
     1
@@ -50,9 +50,9 @@ VALUES
   (
     'contact',
     'Contact us',
-    '<p>Have questions, feedback, or business inquiries? Reach out to us:</p><p><strong>Email:</strong> contact@yoursite.com</p>',
+    '<p>Have questions, feedback, or business inquiries? Reach out to us:</p><p><strong>Email:</strong> contact@levelguide.fun</p>',
     'Contact Us',
-    'Get in touch with Puzzle Walkthroughs.',
+    'Get in touch with LevelGuide.',
     true,
     true,
     2
@@ -60,7 +60,7 @@ VALUES
   (
     'privacy',
     'Privacy policy',
-    '<p>Last updated: October 12, 2026</p><h2>Information we collect</h2><p>We use Google Analytics and Google AdSense which may collect anonymous usage data.</p><h2>Cookies</h2><p>We use cookies to improve user experience and serve relevant ads.</p><h2>Third-party services</h2><p>Our site embeds YouTube videos. YouTube may collect data as per their privacy policy.</p><h2>Contact</h2><p>For privacy questions, email contact@yoursite.com.</p>',
+    '<p>Last updated: October 12, 2026</p><h2>Information we collect</h2><p>We use Google Analytics and Google AdSense which may collect anonymous usage data.</p><h2>Cookies</h2><p>We use cookies to improve user experience and serve relevant ads.</p><h2>Third-party services</h2><p>Our site embeds YouTube videos. YouTube may collect data as per their privacy policy.</p><h2>Contact</h2><p>For privacy questions, email contact@levelguide.fun.</p>',
     'Privacy Policy',
     'Our privacy policy explains how we handle your data.',
     true,
@@ -72,7 +72,7 @@ VALUES
     'Terms of service',
     '<p>By using this site, you agree to these terms.</p><h2>Use of content</h2><p>All content is for informational purposes only.</p><h2>External links</h2><p>We embed YouTube videos and link to external sites. We are not responsible for their content.</p>',
     'Terms of Service',
-    'Terms of service for using Puzzle Walkthroughs.',
+    'Terms of service for using LevelGuide.',
     true,
     true,
     4

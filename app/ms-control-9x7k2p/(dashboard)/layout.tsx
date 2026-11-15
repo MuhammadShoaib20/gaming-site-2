@@ -40,7 +40,7 @@ export default async function AdminDashboardLayout({
       <PwaInstallButton />
       <div className="admin-shell">
         <AdminSidebar
-          siteName={settings?.site_name || 'PuzzleWalkthroughs'}
+          siteName={settings?.site_name || 'LevelGuide'}
           siteLogo={settings?.site_logo || null}
           adminPath={adminPath}
         />

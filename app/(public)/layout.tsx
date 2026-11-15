@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdSlot from '@/components/AdSlot';
 import HomeScrollControlsLoader from '@/components/HomeScrollControlsLoader';
+import BackgroundDecor from '@/components/BackgroundDecor';
 
 export const revalidate = false;
 
@@ -18,6 +19,7 @@ export default async function PublicLayout({
 
   return (
     <>
+      <BackgroundDecor />
       <div className="site-content min-h-screen flex flex-col">
       <HomeScrollControlsLoader />
       <Navbar settings={settings} />

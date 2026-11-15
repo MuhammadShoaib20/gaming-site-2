@@ -1,20 +1,20 @@
-# Puzzle Walkthroughs
+# LevelGuide
 
 > Free video walkthroughs and level solutions for mobile puzzle games like Tricky Hacks and Rotate Rings, owned by MS Digital System.
 
 ## Main Pages
 
-- [Homepage](https://puzzlewalkthroughs.com/) - Browse all available puzzle games and find walkthroughs
-- [Tricky Hacks](https://puzzlewalkthroughs.com/game/tricky-hacks) - Video solutions for all Tricky Hacks levels
-- [Rotate Rings](https://puzzlewalkthroughs.com/game/rotate-rings) - Complete walkthrough for Rotate Rings puzzle game
-- [Blog](https://puzzlewalkthroughs.com/blog) - Latest gaming tips, tricks, and walkthrough guides
+- [Homepage](https://levelguide.fun/) - Browse all available puzzle games and find walkthroughs
+- [Tricky Hacks](https://levelguide.fun/game/tricky-hacks) - Video solutions for all Tricky Hacks levels
+- [Rotate Rings](https://levelguide.fun/game/rotate-rings) - Complete walkthrough for Rotate Rings puzzle game
+- [Blog](https://levelguide.fun/blog) - Latest gaming tips, tricks, and walkthrough guides
 
 ## Optional
 
-- [About](https://puzzlewalkthroughs.com/about) - Learn about MS Digital System and our mission
-- [Contact](https://puzzlewalkthroughs.com/contact) - Get in touch with our team
-- [Privacy Policy](https://puzzlewalkthroughs.com/privacy) - Understand how we handle your data
-- [Terms of Service](https://puzzlewalkthroughs.com/terms) - Terms and conditions for using this site
+- [About](https://levelguide.fun/about) - Learn about MS Digital System and our mission
+- [Contact](https://levelguide.fun/contact) - Get in touch with our team
+- [Privacy Policy](https://levelguide.fun/privacy) - Understand how we handle your data
+- [Terms of Service](https://levelguide.fun/terms) - Terms and conditions for using this site
 
 ## Usage Policy
 

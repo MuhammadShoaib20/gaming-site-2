@@ -24,11 +24,11 @@ export default async function Footer({ settings, categories }: Props) {
     getFooterPages(),
     getFeaturedGames(5),
   ]);
-  const siteName = settings?.site_name || 'PuzzleWalkthroughs';
+  const siteName = settings?.site_name || 'LevelGuide';
   const siteLogo = settings?.site_logo || null;
   const siteDescription =
     settings?.site_description ||
-    'Complete video walkthroughs for all puzzle games.';
+    'Free walkthroughs for the puzzle games and levels listed on LevelGuide.';
   const social = settings?.social_links || {};
   const socialLinks = [
     { key: 'youtube', label: 'YouTube' },
@@ -58,7 +58,15 @@ export default async function Footer({ settings, categories }: Props) {
                   />
                 </span>
               ) : (
-                <span className="brand-mark" aria-hidden="true">🧩</span>
+                <span className="brand-mark" aria-hidden="true">
+                  <Image
+                    src="/levelguide-mark.svg"
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="brand-mark-image"
+                  />
+                </span>
               )}
               <span className="footer-brand-name">{siteName}</span>
             </Link>

@@ -8,7 +8,7 @@ type Props = {
 export default function Navbar({ settings }: Props) {
   return (
     <NavbarClient
-      siteName={settings?.site_name || 'PuzzleWalkthroughs'}
+      siteName={settings?.site_name || 'LevelGuide'}
       siteLogo={settings?.site_logo || null}
     />
   );

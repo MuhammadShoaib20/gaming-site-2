@@ -26,6 +26,8 @@ export default function LoginForm({ siteName, siteLogo, adminPath, message }: Pr
       ? 'Password changed successfully. Please login with your new password.'
       : message === 'sessions_invalidated'
         ? 'All sessions have been invalidated. Please login again.'
+        : message === 'email_changed'
+          ? 'Admin email changed successfully. Please sign in with your new email.'
         : '';
   const visibleSuccess = success || (message !== dismissedMessage ? messageSuccess : '');
 
@@ -141,7 +143,7 @@ export default function LoginForm({ siteName, siteLogo, adminPath, message }: Pr
             autoComplete="email"
             className="w-full mt-1.5 px-4 py-3 border rounded-xl outline-none"
             style={{ borderColor: 'var(--line)' }}
-            placeholder="admin@yoursite.com"
+            placeholder="admin@levelguide.fun"
           />
         </label>
 

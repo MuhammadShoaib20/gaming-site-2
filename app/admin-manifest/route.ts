@@ -5,7 +5,7 @@ export function GET() {
   const manifest = {
     name: 'PW Admin',
     short_name: 'PW Admin',
-    description: 'Manage Puzzle Walkthroughs',
+    description: 'Manage LevelGuide',
     start_url: `${adminBase}dashboard`,
     scope: adminBase,
     display: 'standalone',

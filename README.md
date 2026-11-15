@@ -1,4 +1,4 @@
-# Puzzle Walkthroughs
+# LevelGuide
 
 A Next.js 16 + Supabase puzzle game walkthrough site with cookie consent and analytics.
 
@@ -25,15 +25,15 @@ NEXT_PUBLIC_GSC_VERIFICATION=your_google_verification_code
 
 # Admin Security (REQUIRED)
 ADMIN_SECRET_PATH=ms-control-9x7k2p
-ADMIN_ACCESS_KEY=84729153
+ADMIN_ACCESS_KEY=your_8_digit_admin_key
 
 # Email Notifications (Optional)
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 **Important for Production (Vercel)**:
-- Set `NEXTAUTH_URL=https://puzzlewalkthroughs.com`
-- Set `NEXT_PUBLIC_SITE_URL=https://puzzlewalkthroughs.com`
+- Set `NEXTAUTH_URL=https://levelguide.fun`
+- Set `NEXT_PUBLIC_SITE_URL=https://levelguide.fun`
 - Set `SUPABASE_SECRET_KEY` (required for server-side admin operations)
 
 ## Setting Up Resend API for Email Notifications
@@ -48,7 +48,7 @@ To receive email notifications when someone logs into your admin panel:
    ```
 4. **Verify your domain** (optional but recommended for production):
    - Go to Resend dashboard → Domains
-   - Add your domain (e.g., puzzlewalkthroughs.com)
+   - Add your domain (e.g., levelguide.fun)
    - Add the DNS records provided by Resend
    - Wait for verification
 
@@ -62,7 +62,7 @@ This site provides a structured `llms.txt` file at `/llms.txt` for AI/LLM traini
 - Navigation links
 - Usage policy for personal vs commercial use
 
-The file is accessible at: `https://puzzlewalkthroughs.com/llms.txt`
+The file is accessible at: `https://levelguide.fun/llms.txt`
 
 ## Getting Started
 
@@ -73,6 +73,12 @@ npm run dev
 ```
 
 Access the admin panel at: `http://localhost:3000/ms-control-9x7k2p/login`
+
+### Recover forgotten admin credentials
+
+From the project folder, run `node scripts/reset-admin-account.mjs`. The script reads `.env.local`, shows the target Supabase project, and asks for the new email and password in the terminal. Password input is hidden. If an admin exists, type `RESET` to update it; if the table is empty, type `CREATE` to create the first admin account. Do not continue unless the displayed project is the intended one.
+
+The new password must be at least 12 characters and include uppercase, lowercase, a number, and a special character. The last three passwords cannot be reused.
 
 ## Security Features
 
@@ -86,6 +92,7 @@ The admin panel includes comprehensive security measures:
 - **Security Headers**: CSP, HSTS, X-Frame-Options, etc.
 - **Noindex Meta Tags**: Admin pages excluded from search engines
 - **Server-side IP Detection**: IP address obtained from server headers (no client-side calls)
+- **Admin credentials**: The login email is the username. After signing in, use Admin → Security to change the email or password; both changes require your current password.
 
 ## Cookie Consent Banner
 
@@ -103,8 +110,8 @@ The site includes a GDPR-compliant cookie consent banner that:
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
 
 **IMPORTANT**: Add these environment variables in Vercel:
-- `NEXTAUTH_URL=https://puzzlewalkthroughs.com`
-- `NEXT_PUBLIC_SITE_URL=https://puzzlewalkthroughs.com`
+- `NEXTAUTH_URL=https://levelguide.fun`
+- `NEXT_PUBLIC_SITE_URL=https://levelguide.fun`
 - `ADMIN_SECRET_PATH` (use a custom value, not the default)
 - `ADMIN_ACCESS_KEY` (use a custom 8-digit code)
 - `RESEND_API_KEY` (optional, for email notifications)
@@ -121,7 +128,7 @@ Make sure to add all environment variables in your Vercel project settings.
 4. Apply `supabase/migrations/20261106_bing_credentials.sql` in the Supabase SQL Editor.
 5. Set `BING_CREDENTIALS_ENCRYPTION_KEY` to a base64-encoded 32-byte random key in local and production environments. Generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`. Keep the same value wherever the app runs so existing stored credentials can be decrypted.
 
-The admin verifies the site through Bing's `GetUserSites` API and submits `https://your-domain/sitemap.xml` after verification. The sitemap index at `https://puzzlewalkthroughs.com/sitemap.xml` references separate static-page, blog, game-hub, and level sitemaps. All sitemap URLs use the non-WWW canonical domain. The API key is stored encrypted with AES-256-GCM and is never returned by status endpoints.
+The admin verifies the site through Bing's `GetUserSites` API and submits `https://your-domain/sitemap.xml` after verification. The sitemap index at `https://levelguide.fun/sitemap.xml` references separate static-page, blog, game-hub, and level sitemaps. All sitemap URLs use the non-WWW canonical domain. The API key is stored encrypted with AES-256-GCM and is never returned by status endpoints.
 
 ### IndexNow
 

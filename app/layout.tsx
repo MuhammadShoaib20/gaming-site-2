@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Sora } from 'next/font/google';
+import { DM_Sans, Manrope } from 'next/font/google';
 import DelayedAdSense from '@/components/DelayedAdSense';
 import ConsentAnalytics from '@/components/ConsentAnalytics';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
@@ -7,14 +7,14 @@ import { getSettings } from '@/lib/db';
 import { CANONICAL_SITE_URL } from '@/lib/seo';
 import './globals.css';
 
-const body = Plus_Jakarta_Sans({
+const body = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
   preload: false,
 });
 
-const display = Sora({
+const display = Manrope({
   subsets: ['latin'],
   display: 'swap',
   weight: ['500', '600', '700', '800'],
@@ -25,11 +25,11 @@ const display = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_SITE_URL),
   title: {
-    default: 'Puzzle Walkthroughs — All Levels Guide',
-    template: '%s | Puzzle Walkthroughs',
+    default: 'LevelGuide — All Levels Guide',
+    template: '%s | LevelGuide',
   },
   description:
-    'Complete walkthroughs and video guides for all puzzle games. Level by level solutions with tips and tricks.',
+    'Browse the puzzle games and level walkthroughs currently available on LevelGuide. Follow free video guides and step-by-step solutions.',
   keywords: [
     'puzzle walkthrough',
     'puzzle games',
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     'level solutions',
     'puzzle tips',
   ],
-  authors: [{ name: 'Puzzle Walkthroughs' }],
-  creator: 'Puzzle Walkthroughs',
-  publisher: 'Puzzle Walkthroughs',
+  authors: [{ name: 'LevelGuide' }],
+  creator: 'LevelGuide',
+  publisher: 'LevelGuide',
   alternates: {
     canonical: '/',
     languages: { en: '/' },
@@ -56,16 +56,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: CANONICAL_SITE_URL,
-    siteName: 'Puzzle Walkthroughs',
-    title: 'Puzzle Walkthroughs — All Levels Guide',
+    siteName: 'LevelGuide',
+    title: 'LevelGuide — All Levels Guide',
     description:
-      'Complete walkthroughs and video guides for all puzzle games.',
+      'Browse the puzzle games and level walkthroughs currently available on LevelGuide.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Puzzle Walkthroughs',
+    title: 'LevelGuide',
     description:
-      'Complete walkthroughs and video guides for all puzzle games.',
+      'Browse the puzzle games and level walkthroughs currently available on LevelGuide.',
   },
   robots: {
     index: true,
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0EA5E9',
+  themeColor: '#0284C7',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

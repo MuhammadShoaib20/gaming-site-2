@@ -54,7 +54,7 @@ interface LevelArticleSchemaInput {
 // ==========================================
 
 export function generateOrganizationSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',
@@ -71,12 +71,12 @@ export function generateOrganizationSchema() {
 // ==========================================
 
 export function generateWebsiteSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Puzzle Walkthroughs',
+    name: 'LevelGuide',
     url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
@@ -95,7 +95,7 @@ export function generateArticleSchema(
     canonicalUrl: string;
   }
 ) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const publishedDate = blog.published_date || blog.created_at;
   const modifiedDate = blog.updated_at || publishedDate;
 
@@ -163,7 +163,7 @@ export function generateFAQSchema(faqs: FAQ[]) {
 }
 
 export function generateLevelArticleSchema(article: LevelArticleSchemaInput) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',

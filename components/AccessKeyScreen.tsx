@@ -1,52 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
-const ACCESS_KEY_COOKIE = 'admin_access_key';
-const COOKIE_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
+import { useState } from 'react';
+import { verifyAdminAccessKey } from '@/lib/actions/admin-access';
 
 type Props = {
-  correctKey: string;
   onSuccess: () => void;
 };
 
-export function useAccessKey(): boolean {
-  const [hasAccess, setHasAccess] = useState(false);
-
-  useEffect(() => {
-    const checkAccess = () => {
-      const cookie = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith(`${ACCESS_KEY_COOKIE}=`));
-      if (cookie) {
-        const value = cookie.split('=')[1];
-        const timestamp = parseInt(value, 10);
-        if (Date.now() < timestamp) {
-          setHasAccess(true);
-        } else {
-          // Cookie expired
-          document.cookie = `${ACCESS_KEY_COOKIE}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-          setHasAccess(false);
-        }
-      }
-    };
-
-    checkAccess();
-  }, []);
-
-  return hasAccess;
-}
-
-export function setAccessKeyCookie() {
-  const expiry = Date.now() + COOKIE_EXPIRY;
-  document.cookie = `${ACCESS_KEY_COOKIE}=${expiry}; expires=${new Date(expiry).toUTCString()}; path=/; SameSite=Strict; Secure`;
-}
-
-export function clearAccessKeyCookie() {
-  document.cookie = `${ACCESS_KEY_COOKIE}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-}
-
-export default function AccessKeyScreen({ correctKey, onSuccess }: Props) {
+export default function AccessKeyScreen({ onSuccess }: Props) {
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -59,14 +20,15 @@ export default function AccessKeyScreen({ correctKey, onSuccess }: Props) {
     // Simulate slight delay to prevent timing attacks
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    if (key === correctKey) {
-      setAccessKeyCookie();
-      onSuccess();
-    } else {
-      setError('Invalid access key');
+    const result = await verifyAdminAccessKey(key);
+    if (result.error) {
+      setError(result.error);
       setKey('');
       setLoading(false);
+      return;
     }
+
+    onSuccess();
   };
 
   return (
@@ -94,6 +56,9 @@ export default function AccessKeyScreen({ correctKey, onSuccess }: Props) {
                 value={key}
                 onChange={(e) => setKey(e.target.value)}
                 placeholder="Enter 8-digit code"
+                inputMode="numeric"
+                autoComplete="one-time-code"
+                pattern="[0-9]{8}"
                 maxLength={8}
                 className="w-full px-4 py-3"
                 style={{ borderRadius: '12px', border: '1.5px solid #94A3B8', background: '#fff', color: 'var(--ink)' }}

@@ -55,7 +55,7 @@ export async function GET() {
     return NextResponse.json({
       connected: record?.status === 'connected',
       status: record?.status || 'not_connected',
-      siteUrl: record?.site_url || process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com',
+      siteUrl: record?.site_url || process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun',
       hasApiKey: Boolean(record?.api_key_encrypted),
       lastSubmittedAt: record?.last_submitted_at || null,
       lastError: record?.last_error || null,

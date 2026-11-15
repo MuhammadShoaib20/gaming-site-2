@@ -43,9 +43,9 @@ export default async function AdminSettingsPage() {
         settings={settings}
         initialSiteUrl={
           process.env.NEXT_PUBLIC_SITE_URL ||
-          (settings?.site_url && settings.site_url !== 'https://yoursite.com'
+          (settings?.site_url && settings.site_url !== 'https://levelguide.fun'
             ? settings.site_url
-            : 'https://puzzlewalkthroughs.com')
+            : 'https://levelguide.fun')
         }
       />
     </div>

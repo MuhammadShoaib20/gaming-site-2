@@ -31,12 +31,12 @@ export async function sendLoginNotification(data: LoginNotificationData): Promis
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Admin Panel <noreply@puzzlewalkthroughs.com>',
+        from: 'Admin Panel <noreply@levelguide.fun>',
         to: ['msofficial.cs@gmail.com'],
         subject: 'New login to admin panel',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #0EA5E9; margin-bottom: 20px;">🔐 New Admin Login</h2>
+            <h2 style="color: #8E2DE2; margin-bottom: 20px;">🔐 New Admin Login</h2>
             
             <p style="color: #333; line-height: 1.6;">
               A new login was detected on your admin panel:
@@ -71,7 +71,7 @@ export async function sendLoginNotification(data: LoginNotificationData): Promis
             </p>
 
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #999; font-size: 12px;">
-              <p>This is an automated email from Puzzle Walkthroughs Admin Panel.</p>
+              <p>This is an automated email from LevelGuide Admin Panel.</p>
             </div>
           </div>
         `,

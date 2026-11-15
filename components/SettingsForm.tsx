@@ -65,7 +65,7 @@ export default function SettingsForm({ action, settings, initialSiteUrl }: Props
             <input
               type="text"
               name="site_name"
-              defaultValue={settings?.site_name || 'Puzzle Walkthroughs'}
+              defaultValue={settings?.site_name || 'LevelGuide'}
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -76,7 +76,7 @@ export default function SettingsForm({ action, settings, initialSiteUrl }: Props
               type="url"
               name="site_url"
               defaultValue={settings?.site_url || ''}
-              placeholder="https://yoursite.com"
+              placeholder="https://levelguide.fun"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>

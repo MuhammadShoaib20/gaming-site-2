@@ -120,6 +120,75 @@ export async function changeAdminPassword(formData: FormData) {
   return { success: true };
 }
 
+export async function changeAdminEmail(formData: FormData) {
+  const session = await requireAuth();
+  const currentEmail = session.user?.email;
+
+  if (!currentEmail) {
+    return { error: 'User not found.' };
+  }
+
+  const newEmailValue = formData.get('new_email');
+  const currentPasswordValue = formData.get('current_password');
+
+  if (typeof newEmailValue !== 'string' || typeof currentPasswordValue !== 'string') {
+    return { error: 'Email and current password are required.' };
+  }
+
+  const newEmail = newEmailValue.trim().toLowerCase();
+  if (
+    newEmail.length > 254 ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)
+  ) {
+    return { error: 'Enter a valid email address.' };
+  }
+
+  if (newEmail === currentEmail.toLowerCase()) {
+    return { error: 'This is already your admin email.' };
+  }
+
+  const { data: user, error: userError } = await supabaseAdmin
+    .from('admin_users')
+    .select('id, password_hash')
+    .eq('email', currentEmail)
+    .single();
+
+  if (userError || !user) {
+    return { error: 'Could not verify the current admin account.' };
+  }
+
+  const valid = await bcrypt.compare(currentPasswordValue, user.password_hash);
+  if (!valid) {
+    return { error: 'Current password is incorrect.' };
+  }
+
+  const { data: admins, error: adminsError } = await supabaseAdmin
+    .from('admin_users')
+    .select('email')
+    .neq('id', user.id);
+
+  if (adminsError) {
+    return { error: 'Could not check whether that email is available.' };
+  }
+
+  if (admins?.some((admin) => admin.email.toLowerCase() === newEmail)) {
+    return { error: 'An admin account already uses that email.' };
+  }
+
+  const { error: updateError } = await supabaseAdmin
+    .from('admin_users')
+    .update({ email: newEmail })
+    .eq('id', user.id);
+
+  if (updateError) {
+    return { error: 'Could not update the admin email.' };
+  }
+
+  await logActivity(currentEmail, 'Admin login email changed');
+  revalidatePath('/ms-control-9x7k2p/security');
+  return { success: true };
+}
+
 export async function invalidateAllSessions() {
   const session = await requireAuth();
   const email = session.user?.email;

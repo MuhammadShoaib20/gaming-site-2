@@ -90,7 +90,13 @@ export default function NavbarClient({ siteName, siteLogo }: Props) {
               </span>
             ) : (
               <span className="nv-mark" aria-hidden="true">
-                🧩
+                <Image
+                  src="/levelguide-mark.svg"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="nv-mark-image"
+                />
               </span>
             )}
             <span className="nv-name">{siteName}</span>

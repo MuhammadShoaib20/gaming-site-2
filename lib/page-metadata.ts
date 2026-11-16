@@ -8,9 +8,12 @@ export function getPageMetadata(
 ): Metadata {
   if (!page) return {};
 
+  const canonical = canonicalUrl(canonicalPath || `/${page.slug}`);
+
   return {
     title: page.meta_title || page.title,
     description: page.meta_description || undefined,
-    alternates: { canonical: canonicalUrl(canonicalPath || `/${page.slug}`) },
+    alternates: { canonical },
+    openGraph: { url: canonical },
   };
 }

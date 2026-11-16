@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl('/games'),
     languages: { en: canonicalUrl('/games') },
   },
+  openGraph: { url: canonicalUrl('/games') },
 };
 
 export const revalidate = 3600;

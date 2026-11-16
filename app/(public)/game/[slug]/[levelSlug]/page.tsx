@@ -183,7 +183,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const level = await getLevelByNumber(game.id, levelNumber);
   if (!level) return {};
 
-  const titleSuffix = ' | LevelGuide';
+  const titleSuffix = ' | Level Guide';
   const titlePrefix = trimTitleAtWordBoundary(
     level.meta_title || level.title?.trim() || `${game.name} Level ${level.level_number}`,
     59 - titleSuffix.length
@@ -210,6 +210,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       ...(description ? { description } : {}),
+      url: canonicalUrl(`/game/${game.slug}/level-${level.level_number}`),
       images: level.youtube_id
         ? [`https://i.ytimg.com/vi/${level.youtube_id}/maxresdefault.jpg`]
         : [],
@@ -237,11 +238,10 @@ export default async function LevelPage({ params }: Props) {
   const currentIndex = allLevels.findIndex((item) => item.level_number === levelNumber);
   const prevLevel = currentIndex > 0 ? allLevels[currentIndex - 1] : null;
   const nextLevel = currentIndex < allLevels.length - 1 ? allLevels[currentIndex + 1] : null;
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const popularLevels = [...allLevels]
     .sort((a, b) => (b.views || 0) - (a.views || 0))
     .slice(0, 5);
-  const canonicalLevelUrl = `${siteUrl}/game/${game.slug}/level-${level.level_number}`;
+  const canonicalLevelUrl = canonicalUrl(`/game/${game.slug}/level-${level.level_number}`);
   const quickSolution = level.description?.trim();
   const walkthrough = level.walkthrough?.trim();
   const tip = level.tips?.trim();
@@ -265,12 +265,12 @@ export default async function LevelPage({ params }: Props) {
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { position: 1, name: 'Home', item: siteUrl },
-    { position: 2, name: game.name, item: `${siteUrl}/game/${game.slug}` },
+    { position: 1, name: 'Home', item: canonicalUrl('/') },
+    { position: 2, name: game.name, item: canonicalUrl(`/game/${game.slug}`) },
     {
       position: 3,
       name: `Level ${level.level_number}`,
-      item: `${siteUrl}/game/${game.slug}/level-${level.level_number}`,
+      item: canonicalLevelUrl,
     },
   ]);
 

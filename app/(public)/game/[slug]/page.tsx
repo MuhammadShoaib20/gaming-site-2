@@ -66,6 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: game.meta_title || game.name,
       description: game.meta_description || game.short_description || '',
+      url: canonicalUrl(`/game/${game.slug}`),
       images: game.cover_image ? [game.cover_image] : [],
       type: 'article',
     },
@@ -88,7 +89,6 @@ export default async function GamePage({ params }: Props) {
   const trailerId = game.youtube_trailer_url
     ? extractYoutubeId(game.youtube_trailer_url)
     : '';
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const popularLevels = [...levels]
     .sort((a, b) => (b.views || 0) - (a.views || 0))
     .slice(0, 5);
@@ -101,8 +101,8 @@ export default async function GamePage({ params }: Props) {
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { position: 1, name: 'Home', item: siteUrl },
-    { position: 2, name: game.name, item: `${siteUrl}/game/${game.slug}` },
+    { position: 1, name: 'Home', item: canonicalUrl('/') },
+    { position: 2, name: game.name, item: canonicalUrl(`/game/${game.slug}`) },
   ]);
 
   const validFaqs = (game.faq || []).filter(

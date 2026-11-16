@@ -1,4 +1,4 @@
-import { CANONICAL_SITE_URL } from '@/lib/seo';
+import { CANONICAL_SITE_URL, canonicalUrl } from '@/lib/seo';
 
 const SITEMAP_NAMESPACE = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
@@ -39,7 +39,7 @@ export function createUrlSetResponse(entries: SitemapUrl[]): Response {
   const urls = entries
     .map(
       (entry) => `  <url>
-    <loc>${escapeXml(entry.url)}</loc>
+    <loc>${escapeXml(canonicalUrl(entry.url))}</loc>
     <lastmod>${escapeXml(formatLastModified(entry.lastModified))}</lastmod>
     <changefreq>${entry.changeFrequency}</changefreq>
     <priority>${entry.priority.toFixed(1)}</priority>

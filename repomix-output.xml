@@ -730,7 +730,7 @@ export default async function LevelPage({ params }: Props) {
   const currentIndex = allLevels.findIndex((item) => item.level_number === levelNumber);
   const prevLevel = currentIndex > 0 ? allLevels[currentIndex - 1] : null;
   const nextLevel = currentIndex < allLevels.length - 1 ? allLevels[currentIndex + 1] : null;
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const startIdx = Math.max(0, currentIndex - 5);
   const endIdx = Math.min(allLevels.length, currentIndex + 15);
   const nearbyLevels = allLevels.slice(startIdx, endIdx);
@@ -1152,7 +1152,7 @@ export default async function GamePage({ params }: Props) {
   const trailerId = game.youtube_trailer_url
     ? extractYoutubeId(game.youtube_trailer_url)
     : '';
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const popularLevels = [...levels]
     .sort((a, b) => (b.views || 0) - (a.views || 0))
     .slice(0, 5);
@@ -17360,7 +17360,7 @@ import { sendLoginNotification } from './email';
 import { headers } from 'next/headers';
 
 const ADMIN_PATH = process.env.ADMIN_SECRET_PATH || 'ms-control-9x7k2p';
-const SITE_URL = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com';
+const SITE_URL = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun';
 
 async function getClientIP(): Promise<string> {
   try {
@@ -18347,7 +18347,7 @@ export async function sendLoginNotification(data: LoginNotificationData): Promis
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Admin Panel <noreply@puzzlewalkthroughs.com>',
+        from: 'Admin Panel <noreply@levelguide.fun>',
         to: ['msofficial.cs@gmail.com'],
         subject: 'New login to admin panel',
         html: `
@@ -18583,7 +18583,7 @@ interface LevelArticleSchemaInput {
 // ==========================================
 
 export function generateOrganizationSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',
@@ -18600,7 +18600,7 @@ export function generateOrganizationSchema() {
 // ==========================================
 
 export function generateWebsiteSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',
@@ -18620,7 +18620,7 @@ export function generateWebsiteSchema() {
 // ==========================================
 
 export function generateArticleSchema(blog: Blog & { canonicalUrl: string }) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const publishedDate = blog.published_date || blog.created_at;
   const modifiedDate = blog.updated_at || publishedDate;
 
@@ -18688,7 +18688,7 @@ export function generateFAQSchema(faqs: FAQ[]) {
 }
 
 export function generateLevelArticleSchema(article: LevelArticleSchemaInput) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://puzzlewalkthroughs.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
 
   return {
     '@context': 'https://schema.org',
@@ -19053,7 +19053,7 @@ export async function updateAdminLoginInfo(email: string, ip: string) {
 </file>
 
 <file path="lib/seo.ts">
-export const CANONICAL_SITE_URL = 'https://puzzlewalkthroughs.com';
+export const CANONICAL_SITE_URL = 'https://levelguide.fun';
 
 export function canonicalUrl(pathOrUrl: string): string {
   const parsedUrl = new URL(pathOrUrl, CANONICAL_SITE_URL);

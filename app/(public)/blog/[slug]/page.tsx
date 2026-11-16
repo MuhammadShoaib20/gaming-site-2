@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title,
       description: blog.meta_description,
+      url: canonicalUrl(`/blog/${blog.slug}`),
       images: blog.cover_image ? [blog.cover_image] : [],
       type: 'article',
     },

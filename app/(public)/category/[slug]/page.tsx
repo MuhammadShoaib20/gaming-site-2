@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: canonicalUrl(`/category/${category.slug}`),
       languages: { en: canonicalUrl(`/category/${category.slug}`) },
     },
+    openGraph: { url: canonicalUrl(`/category/${category.slug}`) },
   };
 }
 

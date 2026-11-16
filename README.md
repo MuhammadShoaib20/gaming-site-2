@@ -20,7 +20,7 @@ NEXTAUTH_SECRET=your_nextauth_secret
 NEXTAUTH_URL=http://localhost:3000
 
 # Site
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=https://levelguide.fun
 NEXT_PUBLIC_GSC_VERIFICATION=your_google_verification_code
 
 # Admin Security (REQUIRED)

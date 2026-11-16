@@ -1,5 +1,6 @@
 import type { Blog, FAQ } from '@/types';
 import { formatIsoDate } from '@/lib/utils';
+import { CANONICAL_SITE_URL } from '@/lib/seo';
 
 export const PUBLISHER_NAME = 'MS Digital System';
 export const LEVEL_AUTHOR_NAME = 'MS Digital System Team';
@@ -54,14 +55,12 @@ interface LevelArticleSchemaInput {
 // ==========================================
 
 export function generateOrganizationSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
-
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'MS Digital System',
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
+    url: CANONICAL_SITE_URL,
+    logo: `${CANONICAL_SITE_URL}/logo.png`,
     sameAs: ['https://www.youtube.com/@MSDigitalSystem'],
   };
 }
@@ -71,16 +70,14 @@ export function generateOrganizationSchema() {
 // ==========================================
 
 export function generateWebsiteSchema() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
-
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'LevelGuide',
-    url: siteUrl,
+    name: 'Level Guide',
+    url: CANONICAL_SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${siteUrl}/search?q={search_term_string}`,
+      target: `${CANONICAL_SITE_URL}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };
@@ -95,7 +92,6 @@ export function generateArticleSchema(
     canonicalUrl: string;
   }
 ) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
   const publishedDate = blog.published_date || blog.created_at;
   const modifiedDate = blog.updated_at || publishedDate;
 
@@ -116,7 +112,7 @@ export function generateArticleSchema(
       name: PUBLISHER_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/logo.png`,
+        url: `${CANONICAL_SITE_URL}/logo.png`,
       },
     },
     mainEntityOfPage: {
@@ -163,8 +159,6 @@ export function generateFAQSchema(faqs: FAQ[]) {
 }
 
 export function generateLevelArticleSchema(article: LevelArticleSchemaInput) {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://levelguide.fun').replace(/\/$/, '');
-
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -182,7 +176,7 @@ export function generateLevelArticleSchema(article: LevelArticleSchemaInput) {
       name: PUBLISHER_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/logo.png`,
+        url: `${CANONICAL_SITE_URL}/logo.png`,
       },
     },
     mainEntityOfPage: {

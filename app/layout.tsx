@@ -23,13 +23,13 @@ const display = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(CANONICAL_SITE_URL),
+  metadataBase: new URL('https://levelguide.fun'),
   title: {
-    default: 'LevelGuide — All Levels Guide',
-    template: '%s | LevelGuide',
+    default: 'Level Guide — Puzzle Game Walkthroughs',
+    template: '%s | Level Guide',
   },
   description:
-    'Browse the puzzle games and level walkthroughs currently available on LevelGuide. Follow free video guides and step-by-step solutions.',
+    'Level Guide helps you solve puzzle games with free level-by-level walkthroughs, video guides, and step-by-step solutions.',
   keywords: [
     'puzzle walkthrough',
     'puzzle games',
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     'level solutions',
     'puzzle tips',
   ],
-  authors: [{ name: 'LevelGuide' }],
-  creator: 'LevelGuide',
-  publisher: 'LevelGuide',
+  authors: [{ name: 'Level Guide' }],
+  creator: 'Level Guide',
+  publisher: 'Level Guide',
   alternates: {
     canonical: '/',
     languages: { en: '/' },
@@ -56,16 +56,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: CANONICAL_SITE_URL,
-    siteName: 'LevelGuide',
-    title: 'LevelGuide — All Levels Guide',
+    siteName: 'Level Guide',
+    title: 'Level Guide — Puzzle Game Walkthroughs',
     description:
-      'Browse the puzzle games and level walkthroughs currently available on LevelGuide.',
+      'Solve puzzle games with free level-by-level walkthroughs, video guides, and step-by-step solutions.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LevelGuide',
+    title: 'Level Guide',
     description:
-      'Browse the puzzle games and level walkthroughs currently available on LevelGuide.',
+      'Solve puzzle games with free level-by-level walkthroughs, video guides, and step-by-step solutions.',
   },
   robots: {
     index: true,

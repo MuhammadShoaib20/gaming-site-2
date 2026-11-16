@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl('/search'),
     languages: { en: canonicalUrl('/search') },
   },
+  openGraph: { url: canonicalUrl('/search') },
 };
 
 type Props = { searchParams: Promise<{ q?: string }> };
